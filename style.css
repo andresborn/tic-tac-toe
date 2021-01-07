@@ -46,10 +46,34 @@ body {
 
 .box {
   display: flex;
-  width: 18vh;
-  height: 18vh;
+  width: 20vh;
+  height: 20vh;
   background-color: bisque;
   justify-content: center;
   align-items: center;
   margin: auto;
+}
+
+div.box[data-index="0"],
+div.box[data-index="1"],
+div.box[data-index="2"] {
+  border-bottom: 1px solid black;
+}
+
+div.box[data-index="3"],
+div.box[data-index="4"],
+div.box[data-index="5"] {
+  border-bottom: 1px solid black;
+}
+
+div.box[data-index="0"],
+div.box[data-index="3"],
+div.box[data-index="6"] {
+  border-right: 1px solid black;
+}
+
+div.box[data-index="2"],
+div.box[data-index="5"],
+div.box[data-index="8"] {
+  border-left: 1px solid black;
 }

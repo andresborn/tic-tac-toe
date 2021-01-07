@@ -1,25 +1,43 @@
+const gameContainer = document.querySelector('.game-board-container');
+
 const gameBoard = (() => {
-    let board = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X',];
-    return { board };
+    let board = ["","","","","","","","","",];
+    
+    const displayBoard = (list = [], place) => {
+        place.innerHTML = list.map((item, index) => {
+        return `
+        <div class="box" data-index="${index}">${item}</div>
+        `
+        }).join('');
+    };
+    
+    return { board, displayBoard };
 })();
 
 const displayController = (() => {
+
 })();
 
-const Player = (symbol) => {
-    return { symbol };
+const PlayerFactory = (symbol) => {
+    const play = (targetIndex) => {
+        gameBoard.board.splice(targetIndex, 1, symbol);
+        gameBoard.displayBoard(gameBoard.board, gameContainer);
+    };
+    
+    return { play };
 }
 
-player1 = Player('X');
-player2 = Player('O');
+player1 = PlayerFactory('X');
+player2 = PlayerFactory('O');
 
-const gameContainer = document.querySelector('.game-board-container');
 
-gameBoard.board.map((item, index) => {
-    const div = document.createElement('div');
-    div.setAttribute('class', 'box');
-    div.setAttribute('data-attribute', `${index}`);
-    div.textContent = item;
-    gameContainer.appendChild(div);
 
+const box = gameContainer.querySelector('div.box');
+
+gameContainer.addEventListener('click', (e) => {
+    const position = e.target.dataset.index;
+    player1.play(position);
+    console.log(e.target.dataset.index)
 })
+
+gameBoard.displayBoard(gameBoard.board, gameContainer);
