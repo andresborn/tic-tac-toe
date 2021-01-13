@@ -12,56 +12,65 @@ const gameBoard = (() => {
         }).join('');
     };
     
-    return { board, displayBoard };
-})();
+    const runTest = () => {
+        const equals3 = (a, b, c) => {
+            if (a !== '' && b !== '' & c !== '') {
+            return a===b && b===c && a===c }
+        };
+        // Winning Conditions
+        const check1 = equals3(board[0], board[1], board[2]); // top
+        const check2 = equals3(board[0], board[4], board[8]); // diagonal LR
+        const check3 = equals3(board[0], board[3], board[6]); // left
+        const check4 = equals3(board[1], board[4], board[7]); // cntr topdown
+        const check5 = equals3(board[2], board[5], board[8]); // right
+        const check6 = equals3(board[2], board[4], board[6]); // diagonal RL
+        const check7 = equals3(board[6], board[7], board[8]); // bottom
+        const check8 = equals3(board[3], board[4], board[5]); // mid center
 
-const displayController = (() => {
+        const whoWins = () => {
+        
+            if (check1 || check2 || check3 || check4 || check5 || check6 || check7 || check8) {
+            
+                const div = document.createElement('div')
+                div.textContent = `Someone Won`
+                headerContainer.appendChild(div)
+            };
+        }
+        
+        return whoWins();
+    }
 
+    return { board, displayBoard, runTest };
 })();
 
 const PlayerFactory = (symbol) => {
+    
     const play = (targetIndex) => {
-        if (!gameBoard.board[targetIndex] === "") return; //can't edit if not empty
+
+        if (!(gameBoard.board[targetIndex] === "")) return; //can't edit if not empty
         else {
         gameBoard.board.splice(targetIndex, 1, symbol);
         gameBoard.displayBoard(gameBoard.board, gameContainer);
+        gameBoard.runTest()
         };
-        console.log(gameBoard.board);
+        
     };
     
     return { play };
 }
 
-player1 = PlayerFactory('X');
-player2 = PlayerFactory('O');
+const player1 = PlayerFactory('X');
+const player2 = PlayerFactory('O');
 
-gameContainer.addEventListener('click', (e) => {
-    const position = e.target.dataset.index;
-    player1.play(position);
-    console.log(position);
-    checkIfTrue()
-})
+const gameFlow = (() => {
+    let currentPlayer = player2;
+
+    gameContainer.addEventListener('click', (e) => {
+        currentPlayer = (currentPlayer === player1) ? player2 : player1
+        const position = e.target.dataset.index;
+        currentPlayer.play(position);
+    })
+
+})();
 
 gameBoard.displayBoard(gameBoard.board, gameContainer);
-
-const checkIfTrue = () => {
-    const topArr = ["X","X","X","","","","","",""]; // top
-    const diagonalLRArr = ["X","","","","X","","","","X"]; // dia left right
-    const leftArr = ["X","","","X","","","X","",""]; // left
-    const centerTopDownArr = ["","X","","","X","","","X",""]; // center topdown
-    const rightArr = ["","","X","","","X","","","X"]; // right
-    const diagonalRLArr = ["","","X","","X","","X","",""]; // dia right left
-    const bottom = ["","","","","","","X","X","X"]; // bottom
-    const midCenter = ["","","","X","X","X","","",""];
-    
-    const check1 = gameBoard.board.every((item, i) => item === topArr[i]);
-    const check2 = gameBoard.board.every((item, i) => item === diagonalLRArr[i]);
-    const check3 = gameBoard.board.every((item, i) => item === leftArr[i]);
-    const check4 = gameBoard.board.every((item, i) => item === centerTopDownArr[i]);
-    const check5 = gameBoard.board.every((item, i) => item === rightArr[i]);
-    const check6 = gameBoard.board.every((item, i) => item === diagonalRLArr[i]);
-    const check7 = gameBoard.board.every((item, i) => item === bottom[i]);
-    const check8 = gameBoard.board.every((item, i) => item === midCenter[i]);
-
-    if (check1 || check2 || check3 || check4 || check5 || check6 || check7 || check8) console.log("X ganó")
-}
