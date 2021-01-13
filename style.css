@@ -1,12 +1,18 @@
 html {
   width: 100%;
   height: 100%;
+  --yellow: #fdca40;
+  --orange: #f79824;
+  --lightblue: #33a1fd;
+  --blue: #2176ff;
+  --black: #31393c;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: serif;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--yellow);
 }
 
 * {
@@ -32,6 +38,9 @@ body {
   position: relative;
   margin: 10vh;
   padding: 5vh;
+  color: var(--black);
+  font-weight: bold;
+  font-size: 6vh;
 }
 
 .game-board-container {
@@ -43,39 +52,40 @@ body {
   margin: auto;
   width: 60vh;
   height: 60vh;
-  background-color: aliceblue;
 }
 
 .box {
   display: flex;
   width: 20vh;
   height: 20vh;
-  background-color: bisque;
+  color: white;
+  background-color: var(--lightblue);
   justify-content: center;
   align-items: center;
   margin: auto;
+  font-size: 8vh;
 }
 
 div.box[data-index="0"],
 div.box[data-index="1"],
 div.box[data-index="2"] {
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid var(--black);
 }
 
 div.box[data-index="3"],
 div.box[data-index="4"],
 div.box[data-index="5"] {
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid var(--black);
 }
 
 div.box[data-index="0"],
 div.box[data-index="3"],
 div.box[data-index="6"] {
-  border-right: 1px solid black;
+  border-right: 3px solid var(--black);
 }
 
 div.box[data-index="2"],
 div.box[data-index="5"],
 div.box[data-index="8"] {
-  border-left: 1px solid black;
+  border-left: 3px solid var(--black);
 }
