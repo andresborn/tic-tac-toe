@@ -14,8 +14,12 @@ const gameBoard = (() => {
     
     const runTest = () => {
         const equals3 = (a, b, c) => {
-            if (a !== '' && b !== '' & c !== '') {
-            return a===b && b===c && a===c }
+            if ((a === '') || (b === '') || (c === ''))
+            {console.log("nothing")}
+            else {
+            const same = (a===b && b===c && a===c);
+            return same;
+        };
         };
         // Winning Conditions
         const check1 = equals3(board[0], board[1], board[2]); // top
@@ -29,12 +33,44 @@ const gameBoard = (() => {
 
         const whoWins = () => {
         
-            if (check1 || check2 || check3 || check4 || check5 || check6 || check7 || check8) {
+            let test = (check1 || check2 || check3 || check4 || check5 || check6 || check7 || check8)
             
-                const div = document.createElement('div')
-                div.textContent = `Someone Won`
-                headerContainer.appendChild(div)
-            };
+            switch (test) {
+                case check1:
+                    console.log(`check1`)
+                    break;
+            
+                case check2:
+                    console.log(`check2`)
+                    break;
+            
+                case check3:
+                    console.log(`check3`)
+                    break;
+            
+                case check4:
+                    console.log(`check4`)
+                    break;
+            
+                case check5:
+                    console.log(`check5`)
+                    break;
+            
+                case check6:
+                    console.log(`check6`)
+                    break;
+            
+                case check7:
+                    console.log(`check7`)
+                    break;
+                
+                case check8:
+                    console.log(`check8`)
+                    break;     
+                default:
+                    console.log(`Keep playing`)
+                    break;
+            }
         }
         
         return whoWins();
@@ -74,3 +110,13 @@ const gameFlow = (() => {
 })();
 
 gameBoard.displayBoard(gameBoard.board, gameContainer);
+
+// To congratulate winning player, use a counter for turns.
+// If turn 0,2,4,6,8 triggers .play, player1(X) wins.
+// If turn 1,3,5,7,9 triggers .play, player2(O) wins.
+
+
+
+// const div = document.createElement('div')
+// div.textContent = `Someone Won`
+// headerContainer.appendChild(div)
