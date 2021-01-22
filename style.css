@@ -36,7 +36,7 @@ body {
   align-items: center;
   flex-direction: column;
   position: relative;
-  margin: 10vh;
+  margin: 3vh;
   padding: 5vh;
   color: var(--black);
   font-weight: bold;
@@ -88,4 +88,17 @@ div.box[data-index="2"],
 div.box[data-index="5"],
 div.box[data-index="8"] {
   border-left: 3px solid white;
+}
+
+p {
+  font-size: 3vh;
+  margin: 2vh;
+}
+
+#reset-button {
+  height: 30px;
+  border-radius: 20%;
+  font-weight: bold;
+  color: var(--black);
+  background-color: var(--orange);
 }
