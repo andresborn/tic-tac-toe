@@ -39,7 +39,7 @@ const gameBoard = (() => {
         const displayWinner = (winSymbol) => {
             paragraph.textContent = `${winSymbol} Won!`
         }
-        // Issue: After resetting, winning condition remains. 
+        // Message to self -> Issue: After resetting, winning condition remains. 
         const whoWins = () => {
             switch (test) {
                 case 'check1':
