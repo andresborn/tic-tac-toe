@@ -69,23 +69,23 @@ body {
 div.box[data-index="0"],
 div.box[data-index="1"],
 div.box[data-index="2"] {
-  border-bottom: 3px solid var(--black);
+  border-bottom: 3px solid white;
 }
 
 div.box[data-index="3"],
 div.box[data-index="4"],
 div.box[data-index="5"] {
-  border-bottom: 3px solid var(--black);
+  border-bottom: 3px solid white;
 }
 
 div.box[data-index="0"],
 div.box[data-index="3"],
 div.box[data-index="6"] {
-  border-right: 3px solid var(--black);
+  border-right: 3px solid white;
 }
 
 div.box[data-index="2"],
 div.box[data-index="5"],
 div.box[data-index="8"] {
-  border-left: 3px solid var(--black);
+  border-left: 3px solid white;
 }

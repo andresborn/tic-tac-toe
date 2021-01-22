@@ -14,58 +14,58 @@ const gameBoard = (() => {
     
     const runTest = () => {
         const equals3 = (a, b, c) => {
-            if ((a === '') || (b === '') || (c === ''))
-            {console.log("nothing")}
+            if ((a === "") || (b === "") || (c === ""))
+            {return}
             else {
-            const same = (a===b && b===c && a===c);
-            return same;
+            return (a===b && b===c && a===c);
+            };
         };
-        };
-        // Winning Conditions
-        const check1 = equals3(board[0], board[1], board[2]); // top
-        const check2 = equals3(board[0], board[4], board[8]); // diagonal LR
-        const check3 = equals3(board[0], board[3], board[6]); // left
-        const check4 = equals3(board[1], board[4], board[7]); // cntr topdown
-        const check5 = equals3(board[2], board[5], board[8]); // right
-        const check6 = equals3(board[2], board[4], board[6]); // diagonal RL
-        const check7 = equals3(board[6], board[7], board[8]); // bottom
-        const check8 = equals3(board[3], board[4], board[5]); // mid center
-
-        const whoWins = () => {
         
-            let test = (check1 || check2 || check3 || check4 || check5 || check6 || check7 || check8)
+        const whoWins = () => {
+        // Winning Conditions
+        const check1 = equals3(board[0], board[1], board[2]) ? "check1" : false; // top
+        const check2 = equals3(board[0], board[4], board[8]) ? "check2" : false; // diagonal LR
+        const check3 = equals3(board[0], board[3], board[6]) ? "check3" : false; // left
+        const check4 = equals3(board[1], board[4], board[7]) ? "check4" : false; // cntr topdown
+        const check5 = equals3(board[2], board[5], board[8]) ? "check5" : false; // right
+        const check6 = equals3(board[2], board[4], board[6]) ? "check6" : false; // diagonal RL
+        const check7 = equals3(board[6], board[7], board[8]) ? "check7" : false; // bottom
+        const check8 = equals3(board[3], board[4], board[5]) ? "check8" : false; // mid center
+        
+        let test = (check1 || check2 || check3 || check4 || check5 || check6 || check7 || check8);
+            
             
             switch (test) {
-                case check1:
-                    console.log(`check1`)
+                case 'check1':
+                    console.log(`top`)
                     break;
             
-                case check2:
-                    console.log(`check2`)
+                case 'check2':
+                    console.log(`diagonalLR`)
                     break;
             
-                case check3:
-                    console.log(`check3`)
+                case 'check3':
+                    console.log(`left`)
                     break;
             
-                case check4:
-                    console.log(`check4`)
+                case 'check4':
+                    console.log(`cntr topdown`)
                     break;
             
-                case check5:
-                    console.log(`check5`)
+                case 'check5':
+                    console.log(`right`)
                     break;
             
-                case check6:
-                    console.log(`check6`)
+                case 'check6':
+                    console.log(`diagonalRL`)
                     break;
             
-                case check7:
-                    console.log(`check7`)
+                case 'check7':
+                    console.log(`bottom`)
                     break;
                 
-                case check8:
-                    console.log(`check8`)
+                case 'check8':
+                    console.log(`midcenter`)
                     break;     
                 default:
                     console.log(`Keep playing`)
