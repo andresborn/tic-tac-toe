@@ -37,10 +37,13 @@ const gameBoard = (() => {
         let test = (check1() || check2() || check3() || check4() || check5() || check6() || check7() || check8());
         
         const displayWinner = (winSymbol) => {
-            // if winSymbol === "X" player 1 won
-            paragraph.textContent = `${winSymbol} Won!`
+            if (winSymbol === "X") {
+                paragraph.textContent = `${player1.name} Won!`
+            }
+            else {
+                paragraph.textContent = `${player2.name} Won!`
+            }
         }
-        // Message to self -> Issue: After resetting, winning condition remains. 
         const whoWins = () => {
             switch (test) {
                 case 'check1':
@@ -85,8 +88,8 @@ const gameBoard = (() => {
     return { board, render, runTest };
 })();
 
-const PlayerFactory = (symbol) => {
-    
+const PlayerFactory = (symbol, name) => {
+
     const play = (targetIndex) => {
 
         if (!(gameBoard.board[targetIndex] === "")) return; //can't edit if not empty
@@ -97,11 +100,11 @@ const PlayerFactory = (symbol) => {
         };
     };
     
-    return { play };
+    return { play, name };
 }
 
-const player1 = PlayerFactory('X');
-const player2 = PlayerFactory('O');
+const player1 = PlayerFactory('X', "John");
+const player2 = PlayerFactory('O', "Mary");
 
 const gameFlow = (() => {
     let currentPlayer = player2;
